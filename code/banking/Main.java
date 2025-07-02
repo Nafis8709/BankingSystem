@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         ArrayList<Account> accounts = new ArrayList<>();
-        // Add initial accounts if needed
         accounts.add(new SavingAccount("1620", "sinha", 0));
         accounts.add(new CurrentAccount("1619", "rashik", 0));
         accounts.add(new DepositPremiumAccount("1621", "nafis", 0));

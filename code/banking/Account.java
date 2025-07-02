@@ -1,36 +1,52 @@
 package banking;
 
-public class Account {
+public abstract class Account {
     private String id;
     private String name;
-    private int balance;
+    private double balance;
 
 
-    Account(String id,String name){
-        this.id=id;
-        this.name=name;
-        this.balance=0;
-    }
-
-    Account(String id,String name,int balance){
+    public Account(String id,String name,double balance){
         this.id=id;
         this.name=name;
         this.balance=balance;
     }
 
+    /*Account(String id,String name,int balance){
+        this.id=id;
+        this.name=name;
+        this.balance=balance;
+    }*/
+
     public String getID(){
         return id;
     }
 
-    public String getName(){
+    /*public String getName(){
         return name;
-    }
+    }*/
 
-    public int getBalance(){
+    public double getBalance(){
         return balance;
     }
+    public abstract void debit (double amount);
+    public void credit (double amount){
+        balance+=amount;
+    }
+    public abstract double getInterest();
 
-    public int credit(int amount){
+    public void transferTo(Account receiver, double amount){
+        if(this instanceof DepositPremiumAccount){
+            System.out.println("Cannot transfer from Deposit Premium Account before 5 installments.");
+        }
+            this.debit(amount);
+            receiver.credit(amount);
+            System.out.println("Transferred ");
+        }
+}
+
+
+    /*public int credit(int amount){
         this.balance+=amount;
         return balance;
     }
@@ -70,5 +86,5 @@ public class Account {
     }
 
     public void debit(double amount) {
-    }
+    }*/
 }
